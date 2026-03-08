@@ -1,5 +1,7 @@
 package org.example.demo;
 
+import org.example.demo.api.RequestParam;
+
 @RestController
 public class HelloController {
 
@@ -14,6 +16,11 @@ public class HelloController {
     @GetMapping("/hello")
     public static String helloWorld() {
         return "Hello World";
+    }
+
+    @GetMapping("/greeting")
+    public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return "Hello " + name;
     }
 
 
