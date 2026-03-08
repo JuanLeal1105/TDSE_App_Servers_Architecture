@@ -3,34 +3,54 @@ package org.example.demo.server;
 import org.example.demo.GetMapping;
 import org.example.demo.RestController;
 
+import java.io.File;
 import java.lang.reflect.Method;
+import java.net.URL;
 
 public class MicroSpringBoot {
 
     public static void main(String[] args) {
-        if (args.length == 0) {
-            System.err.println("Please provide a controller class name. Example: org.example.demo.HelloController");
-            return;
-        }
+        System.out.println("Starting MicroSpringBoot...");
+
+        scanAndRegister("org.example.demo");
 
         try {
-            Class<?> c = Class.forName(args[0]);
-            Object controllerInstance = c.getDeclaredConstructor().newInstance();
+            HttpServer.start(8080);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-            if (c.isAnnotationPresent(RestController.class)) {
-                for (Method m : c.getDeclaredMethods()) {
-                    if (m.isAnnotationPresent(GetMapping.class)) {
-                        GetMapping mapping = m.getAnnotation(GetMapping.class);
-                        System.out.println("Mapped URI: " + mapping.value() + " -> " + m.getName());
+    private static void scanAndRegister(String basePackage) {
+        try {
+            String path = basePackage.replace('.', '/');
+            URL resource = ClassLoader.getSystemClassLoader().getResource(path);
 
-                        HttpServer.addEndpoint(mapping.value(), m, controllerInstance);
+            if (resource != null) {
+                File directory = new File(resource.getFile());
+                if (directory.exists()) {
+                    for (File file : directory.listFiles()) {
+                        if (file.getName().endsWith(".class")) {
+                            String className = basePackage + '.' + file.getName().substring(0, file.getName().length() - 6);
+
+                            Class<?> c = Class.forName(className);
+                            if (c.isAnnotationPresent(RestController.class)) {
+                                Object instance = c.getDeclaredConstructor().newInstance();
+
+                                for (Method m : c.getDeclaredMethods()) {
+                                    if (m.isAnnotationPresent(GetMapping.class)) {
+                                        GetMapping mapping = m.getAnnotation(GetMapping.class);
+                                        System.out.println("Auto-Mapped URI: " + mapping.value() + " -> " + m.getName());
+                                        HttpServer.addEndpoint(mapping.value(), m, instance);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
-            HttpServer.start(8080);
-
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error during classpath scanning: " + e.getMessage());
         }
     }
 }
