@@ -24,7 +24,8 @@ demo/
         │           └── demo/
         │               ├── api/
         │               │  ├── Request.java
-        │               │   └── Response.java
+        │               │  ├── RequestParam.java
+        │               │  └── Response.java
         │               ├── server/
         │               │   ├── HttpServer.java
         │               │   └── MicroSpringBoot.java
