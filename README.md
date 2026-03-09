@@ -141,3 +141,14 @@ After installing all those tools, we can follow the Running Instructions that ar
 For more information, check the specified section clicking the link:
 
 [How to run the lab](#how-to-run-the-lab)
+
+### **Evidence of AWS Running on the Instance**
+#### Cloning the repository
+![CloningInstace.png](Images/CloningInstace.png)
+#### Compiling the lab
+![CompilingInstance.png](Images/CompilingInstance.png)
+#### Running the lab inside the instace
+![RuningInstance.png](Images/RuningInstance.png)
+#### Evidence using the Public DNS direction given by AWS
+![Evidence1.png](Images/Evidence1.png)
+![Evidence2.png](Images/Evidence2.png)
