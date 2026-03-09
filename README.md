@@ -98,4 +98,46 @@ The lab instructions included a `GreetingController` with an `AtomicLong` counte
 Now, every time you refresh the `/greeting` page, the counter goes up (Ex: "Hello, Juan! (Request #1)", then "(Request #2)"). This is a very important detail because it proves that the framework creates one instance of the controller and keeps it alive in memory across multiple HTTP requests, just like a real framework should. It also proves that the Auto-Discovery scanner can successfully find, load, and manage multiple separate classes (`HelloController` and `GreetingController`) at the same time without breaking any routes.
 
 ---
-## **Web Application Server in AWS**
+
+## **Evidences of the Endpoints**
+1. **Basic**
+   ![Basic.png](Images/Basic.png)
+
+2. **Pi**
+   ![Pi.png](Images/Pi.png)
+
+3. **HelloWorld**
+   ![HelloWorld.png](Images/HelloWorld.png)
+
+4. **Index.html**
+   ![Index.png](Images/Index.png)
+
+5. **Greeting**
+   ![Count1.png](Images/Count1.png)
+   ![Count2.png](Images/Count2.png)
+
+---
+## **Web Server Application in AWS**
+In order to deploy the Web Server in AWS we used the same instance we created in class, so using the `.pem` key we were able to connect to AWS.
+
+Later on, we proceeded to install some developer tools in order to use the application we created. Here are the following you need to install to upload the project to your instance:
+1. We install git in the instance using the following command:
+   ```bash
+   sudo yum install git -y
+   ```
+
+2. Then we install java in order to compile the project using the following command:
+   ```bash
+   sudo yum install java-17-amazon-corretto-devel -y
+   ```
+
+3. Finally we install Maven in order to compile:
+   ```bash
+   sudo yum install -y apache-maven
+   ```
+   
+After installing all those tools, we can follow the Running Instructions that are listed at the beginning of this README (Clone repo, compile, etc.)
+
+For more information, check the specified section clicking the link:
+
+[How to run the lab](#how-to-run-the-lab)
