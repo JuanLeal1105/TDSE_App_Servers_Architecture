@@ -117,6 +117,22 @@ Now, every time you refresh the `/greeting` page, the counter goes up (Ex: "Hell
    ![Count2.png](Images/Count2.png)
 
 ---
+## **Testing the Framework**
+To guarantee the stability and correctness of the custom framework, a suite of unit tests was developed using JUnit. Because the architecture successfully implements Inversion of Control (IoC), the core logic of the framework can be tested in isolation without needing to start the physical socket server.
+
+The test suite focuses on two main areas:
+- **Request Parsing (`RequestTest.java`):** Validates the custom `Request` abstraction. It ensures that the server correctly parses and extracts multiple query parameters from a URL (Ex: `?name=Juan&role=Admin`). It also strictly tests edge cases, ensuring the framework gracefully handles empty queries, null values, or malformed strings without crashing.
+- **Framework Reflection Logic (`FrameworkReflectionTest.java`):** This suite verifies the internal mechanics of the IoC container. Instead of just checking method outputs, it uses Java Reflection to inspect the metadata of the components. It verifies that `GreetingController` is properly annotated with `@RestController` for the Auto-Discovery scanner to find it, confirms that `@GetMapping` holds the correct URI path data, and ensures that `@RequestParam` successfully retains the `defaultValue` needed for parameter injection.
+
+### Running the Tests
+To execute the test suite, ensure you are in the root directory of the project (where the `pom.xml` is located) and run the following Maven command:
+```bash
+mvn clean test
+```
+![TestMVN.png](Images/TestMVN.png)
+
+
+---
 ## **Web Server Application in AWS**
 In order to deploy the Web Server in AWS we used the same instance we created in class, so using the `.pem` key we were able to connect to AWS.
 
