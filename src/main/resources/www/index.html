@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Framework Test</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        .container { border: 1px solid #ccc; padding: 20px; display: inline-block; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>MicroSpringBoot Server</h1>
+    <p>This page is served as a <strong>static file</strong>.</p>
+
+    <h3>Test the Framework:</h3>
+    <button onclick="window.location.href='/greeting?name=Student'">Click to test @RequestParam</button>
+
+    <hr>
+    <h3>Static Image Test:</h3>
+    <img src="logo.png" alt="Test Image" style="max-width: 200px;">
+</div>
+</body>
+</html>
