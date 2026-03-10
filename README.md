@@ -18,28 +18,32 @@ demo/
 ├── pom.xml
 └── src/
     └── main/
-        ├── java/
-        │   └── org/
-        │       └── example/
-        │           └── demo/
-        │               ├── api/
-        │               │  ├── Request.java
-        │               │  ├── RequestParam.java
-        │               │  └── Response.java
-        │               ├── server/
-        │               │   ├── HttpServer.java
-        │               │   └── MicroSpringBoot.java
-        │               ├── DemoApplication.java
-        │               ├── GetMapping.java
-        │               ├── GreetingController.java
-        │               ├── HelloController.java
-        │               ├── InvokeMain.java
-        │               ├── ReflexionNavigator.java
-        │               └── RestController.java
-        └── resources/
-            └── www/
-                ├── index.html
-                └── logo.jpg
+    │   ├── java/
+    │   │   └── org/
+    │   │       └── example/
+    │   │           └── demo/
+    │   │               ├── api/
+    │   │               │  ├── Request.java
+    │   │               │  ├── RequestParam.java
+    │   │               │  └── Response.java
+    │   │               ├── server/
+    │   │               │   ├── HttpServer.java
+    │   │               │   └── MicroSpringBoot.java
+    │   │               ├── DemoApplication.java
+    │   │               ├── GetMapping.java
+    │   │               ├── GreetingController.java
+    │   │               ├── HelloController.java
+    │   │               ├── InvokeMain.java
+    │   │               ├── ReflexionNavigator.java
+    │   │               └── RestController.java
+    │   └── resources/
+    │       └── www/
+    │           ├── index.html
+    │           └── logo.jpg
+    └── test/
+        └── java/
+            ├── FrameworkReflectionTest.java
+            └── RequestTest.java
 ```
 
 ### **How to run the lab**
