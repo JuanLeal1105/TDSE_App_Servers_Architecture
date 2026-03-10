@@ -74,6 +74,14 @@ demo/
    - Basic REST Endpoint (Pi values): http://localhost:8080/pi
    - Dynamic Parameter Injection: http://localhost:8080/greeting?name=Juan
 
+6. **Running the Tests**
+   
+   If you want to perform the tests created for the lab, you can use the following command:
+   ```bash
+   mvn clean test
+   ```
+   
+   Or you can manually use the ID to run all the tests.
 
 ---
 
@@ -159,6 +167,8 @@ For more information, check the specified section clicking the link:
 [How to run the lab](#how-to-run-the-lab)
 
 ### **Evidence of AWS Running on the Instance**
+#### Connection to the instance
+![Connection.png](Images/Connection.png)
 #### Cloning the repository
 ![CloningInstace.png](Images/CloningInstace.png)
 #### Compiling the lab
@@ -168,3 +178,5 @@ For more information, check the specified section clicking the link:
 #### Evidence using the Public DNS direction given by AWS
 ![Evidence1.png](Images/Evidence1.png)
 ![Evidence2.png](Images/Evidence2.png)
+#### Running the Tests on the Instance
+![TestInstace.png](Images/TestInstace.png)
